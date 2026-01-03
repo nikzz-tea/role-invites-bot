@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 	"os/signal"
+	"role-invites-bot/internal/handlers"
 	"syscall"
 
 	"github.com/bwmarrin/discordgo"
@@ -30,6 +31,8 @@ func main() {
 		log.Fatal(err)
 	}
 	defer sess.Close()
+
+	sess.AddHandler(handlers.CommandHandler)
 
 	log.Println("Logged as " + sess.State.User.Username + "#" + sess.State.User.Discriminator)
 
