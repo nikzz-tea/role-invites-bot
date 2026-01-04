@@ -7,7 +7,6 @@ import (
 var events = []any{}
 
 func EventHandler(s *discordgo.Session) {
-
 	for _, event := range events {
 		s.AddHandler(event)
 	}
