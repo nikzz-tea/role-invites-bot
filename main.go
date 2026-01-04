@@ -6,6 +6,7 @@ import (
 	"os/signal"
 	_ "role-invites-bot/internal/commands"
 	"role-invites-bot/internal/database"
+	_ "role-invites-bot/internal/events"
 	"role-invites-bot/internal/handlers"
 	"syscall"
 
