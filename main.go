@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 	"os/signal"
+	_ "role-invites-bot/internal/commands"
 	"role-invites-bot/internal/database"
 	"role-invites-bot/internal/handlers"
 	"syscall"
