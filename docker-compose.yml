@@ -1,0 +1,8 @@
+services:
+  role-invites-bot:
+    build: .
+    container_name: role-invites-bot
+    restart: unless-stopped
+    volumes:
+      - ./db.sqlite:/app/db.sqlite
+      - ./.env:/app/.env
