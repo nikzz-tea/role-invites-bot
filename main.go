@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 	"os/signal"
+	"role-invites-bot/internal/database"
 	"role-invites-bot/internal/handlers"
 	"syscall"
 
@@ -34,6 +35,8 @@ func main() {
 
 	sess.AddHandler(handlers.CommandHandler)
 	handlers.EventHandler(sess)
+
+	database.Init()
 
 	log.Println("Logged as " + sess.State.User.Username + "#" + sess.State.User.Discriminator)
 
