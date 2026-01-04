@@ -25,7 +25,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	sess.Identify.Intents = discordgo.IntentsAllWithoutPrivileged
+	sess.Identify.Intents = discordgo.IntentsAllWithoutPrivileged | discordgo.IntentsGuildMembers
 
 	err = sess.Open()
 	if err != nil {
