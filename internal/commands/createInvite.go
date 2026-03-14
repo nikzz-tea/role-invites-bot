@@ -21,11 +21,11 @@ func init() {
 				return
 			}
 			if len(args) < 2 {
-				sess.ChannelMessageSend(message.ChannelID, "🔴 **!createinvite <role id> <max uses>**")
+				sess.ChannelMessageSend(message.ChannelID, "🔴 **!createinvite <@role> <max uses>**")
 				return
 			}
 
-			roleID := args[0]
+			roleID := args[0][3 : len(args[0])-1]
 			roles, err := sess.GuildRoles(message.GuildID)
 			if err != nil {
 				sess.ChannelMessageSend(message.ChannelID, "🔴 **Failed to fetch roles**")
