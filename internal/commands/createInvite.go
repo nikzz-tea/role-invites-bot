@@ -14,7 +14,7 @@ import (
 func init() {
 	handlers.RegisterCommand(models.CommandObject{
 		Name:    "createinvite",
-		Aliases: []string{"invitecreate", "makeinvite"},
+		Aliases: []string{"invite", "invitecreate", "makeinvite"},
 		Callback: func(props models.CommandProps) {
 			sess, message, args := props.Sess, props.Message, props.Args
 			if message.GuildID == "" {
