@@ -58,6 +58,10 @@ func init() {
 				sess.ChannelMessageSend(message.ChannelID, "🔴 **Failed to create the role**")
 				return
 			}
+			if err := sess.GuildMemberRoleAdd(message.GuildID, sess.State.User.ID, role.ID); err != nil {
+				sess.ChannelMessageSend(message.ChannelID, "🔴 **Failed to assign the role to the bot**")
+				return
+			}
 
 			accessOverwrites := []*discordgo.PermissionOverwrite{
 				{ID: message.GuildID, Type: discordgo.PermissionOverwriteTypeRole, Deny: discordgo.PermissionViewChannel},
@@ -87,6 +91,10 @@ func init() {
 					sess.ChannelMessageSend(message.ChannelID, fmt.Sprintf("🔴 **Failed to create the channel `%v`**", spec.name))
 					return
 				}
+			}
+
+			if err := sess.GuildMemberRoleRemove(message.GuildID, sess.State.User.ID, role.ID); err != nil {
+				sess.ChannelMessageSend(message.ChannelID, "🔴 **Failed to remove the role from the bot**")
 			}
 
 			sess.ChannelMessageSend(
